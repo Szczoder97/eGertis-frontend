@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Item } from 'src/app/models/item.model';
 
 @Component({
   selector: 'app-items',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsComponent implements OnInit {
 
-  constructor() { }
+  items: Item[] = [];
 
   ngOnInit(): void {
+    this.items = [
+      {id: 1, name: 'dupa'},
+      {id: 2, name: 'pudzian'}
+    ]
+  }
+  onSubmit(form: NgForm) {
+
   }
 
 }

@@ -4,19 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './components/items/items.component';
-import { ListComponent } from './components/items/list/list.component';
-import { EditComponent } from './components/items/edit/edit.component';
+import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
-    ListComponent,
-    EditComponent
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
