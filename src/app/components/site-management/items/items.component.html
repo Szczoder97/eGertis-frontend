@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <h1>Item Management</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(newItem)" #newItem="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">
           <input
@@ -12,7 +17,7 @@
             required
           />
         </div>
-        <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+        <button class="btn btn-success" type="submit" [disabled]="!newItem.valid">
           ADD
         </button>
       </div>

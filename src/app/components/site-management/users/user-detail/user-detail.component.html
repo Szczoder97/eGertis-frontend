@@ -1,0 +1,30 @@
+<a style="cursor: pointer;"
+   class="list-group-item clearfix">
+   <div class="row">
+    <div class="col-sm-2">
+        <h4>{{user.name}}</h4>
+    </div>
+    <div class="col-sm-3">
+        <h4>{{user.surname}}</h4>
+    </div>
+    <div class="col-sm-5">
+        <form (ngSubmit)="onChangeRole(changeRole)" #changeRole="ngForm">
+            <div class="pull-left form-group">
+                <select class="form-control" [ngModel]="user.role"  id="role" name="role">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Purchaser">Purchaser</option>
+                    <option value="SupplyWorker">SupplyWorker</option>
+                    <option value="NewUser">NewUser</option>
+                </select>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-success"
+                [disabled]="!roleChanged(changeRole)">SAVE</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-danger" (click)="onDelete()">DELETE</button>
+    </div>
+   </div>  
+</a>

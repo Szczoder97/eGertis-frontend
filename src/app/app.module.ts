@@ -1,24 +1,44 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemsComponent } from './components/items/items.component';
-import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { FormsModule } from '@angular/forms';
+import { SiteManagementComponent } from './components/site-management/site-management.component';
+import { UsersComponent } from './components/site-management/users/users.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { NabvarComponent } from './components/navbar/navbar.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ItemsComponent } from './components/site-management/items/items.component';
+import { ItemDetailComponent } from './components/site-management/items/item-detail/item-detail.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { UserDetailComponent } from './components/site-management/users/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    SiteManagementComponent,
+    UsersComponent,
+    AuthComponent,
+    NabvarComponent,
+    OrdersComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
