@@ -1,1 +1,18 @@
-<p>orders works!</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <h1 style="text-align: center;">New Orders</h1>
+        </div>
+        <button class="btn btn-info" style="width: 100%;" (click)="onCreate()">
+            ADD NEW ORDER
+        </button>
+        <app-order *ngFor="let order of unrealizedOrders" [order]="order"></app-order>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div class="row">
+            <h1 style="text-align: center;">Realized Orders</h1>
+        </div>
+        <app-order *ngFor="let order of realizedOrders" [order]="order"></app-order>
+    </div>
+</div>
