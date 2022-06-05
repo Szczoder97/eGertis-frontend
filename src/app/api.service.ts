@@ -38,6 +38,10 @@ export class ApiService {
         return this.http.get<ServiceResponse>('https://localhost:5001/order');
     }
 
+    getOrder(id: number) {
+        return this.http.get<ServiceResponse>('https://localhost:5001/order/' + id);
+    }
+
     createOrder() {
         return this.http.post<ServiceResponse>('https://localhost:5001/order', null);
     }

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { ApiService } from "src/app/api.service";
+import { OrderDetail } from "src/app/models/order-detail.model";
 import { Order } from "src/app/models/order.model";
 import { UpdateOrder } from "src/app/models/update-order.model";
 
@@ -13,11 +14,14 @@ export class OrderService {
     realizedOrders: Order[] = [];
     realizedOrders$: BehaviorSubject<Order[]>;
     newOrderId!: number;
+    orderDetails!: OrderDetail;
+    orderDetails$: Subject<OrderDetail>;
     
 
     constructor(private apiService: ApiService){
         this.unrealizedOrders$ = new BehaviorSubject<Order[]>([]);
         this.realizedOrders$ = new BehaviorSubject<Order[]>([]);
+        this.orderDetails$ = new Subject();
     }
 
     getRealizedOrders(): Observable<Order[]> {
@@ -83,6 +87,14 @@ export class OrderService {
             this.unrealizedOrders$.next(this.unrealizedOrders);
             this.realizedOrders$.next(this.realizedOrders);
         });
+    }
+
+    getOrder(id: number) {
+        this.apiService.getOrder(id).subscribe(response => {
+        this.orderDetails = response.data;
+        this.orderDetails$.next(this.orderDetails);
+      });
+      return this.orderDetails$;
     }
 
     private manageOrder(order: Order) {

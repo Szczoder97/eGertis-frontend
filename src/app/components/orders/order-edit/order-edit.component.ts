@@ -45,5 +45,4 @@ export class OrderEditComponent implements OnInit {
     this.orderService.deleteOrder(this.orderService.newOrderId);
     this.router.navigate(['/orders']);
   }
-
 }

@@ -12,6 +12,7 @@
             class="form-control"
             ngModel
             name="title"
+            required
           />
         </div>
       </div>
@@ -28,12 +29,13 @@
           [id]="item.name"
           [name]="item.name"
           ngModel
+          required
           class="form-control"/>
         </div>
       </a>
       </div>
       <br>
-      <button type="submit" class="btn btn-success pull-right">SAVE</button>
+      <button type="submit" class="btn btn-success pull-right" [disabled]="!orderForm.valid">SAVE</button>
     </form>
     <br />
     <button class="btn btn-danger" (click)="onDelete()">ABORT</button>

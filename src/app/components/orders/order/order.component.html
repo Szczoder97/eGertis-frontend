@@ -16,7 +16,8 @@
         </div>
     </div>
     <div class="col-sm-4" *ngIf="order.isRealized">
-        <button class="btn btn-info" style="width: 100%;">Get Raport</button>
+        <button class="btn btn-info" style="width: 100%;" (click)="onShowDetails()">Show Details</button>
     </div>
    </div> 
 </a>
+

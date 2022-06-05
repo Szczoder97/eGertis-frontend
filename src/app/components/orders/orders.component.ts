@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { OrderDetail } from 'src/app/models/order-detail.model';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from './order.service';
 
@@ -15,6 +16,7 @@ export class OrdersComponent implements OnInit {
   unrealizedOrders: Order[] = [];
   realizedOrdersSub: Subscription;
   unrealizedOrdersSub: Subscription;
+
 
   constructor(private orderService: OrderService, private router: Router) { 
     this.orderService.initOrders();

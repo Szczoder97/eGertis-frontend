@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { OrderDetail } from 'src/app/models/order-detail.model';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from '../order.service';
 
@@ -11,8 +13,9 @@ import { OrderService } from '../order.service';
 export class OrderComponent implements OnInit {
 
   @Input() order!: Order;
+  
 
-  constructor(private orderService: OrderService) { 
+  constructor(private orderService: OrderService, private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -24,6 +27,10 @@ export class OrderComponent implements OnInit {
 
   onDelete(): void {
     this.orderService.deleteOrder(this.order.id);
+  }
+
+  onShowDetails() {
+    this.router.navigate(['/order-detail', this.order.id]);
   }
 
 }
